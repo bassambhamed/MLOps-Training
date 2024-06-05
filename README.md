@@ -5,7 +5,7 @@ As the importance of machine learning grows over time, it is becoming increasing
 
 Example of the workflow we'll be developing during this training.
 
-![MLOps Workflow](/Users/MacBook/Desktop/MLOps Training/notebooks/images/workflow.png)
+![alt text](notebooks/images/workflow.png)
 
 **Bassem Ben Hamed**
 
