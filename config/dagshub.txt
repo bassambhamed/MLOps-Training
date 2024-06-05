@@ -1,0 +1,42 @@
+Anaconda Prompt ou Terminal VSCode
+$ git config --global user.email ".."
+$ git config --global user.name ".."
+
+1. Initialize a git repository 
+
+$ git init
+$ git add notebooks
+$ git add config
+$ git add backend
+$ git add frontend
+$ git add requirements.txt
+$ git add README.md
+$ git commit -m "first commit"
+$ git branch -M main
+$ git remote add origin https://dagshub.com/bbhamed/mlops.git
+$ git push -u origin main
+
+2. Initialize a DVC project and track data
+
+$ touch DATAFILE.md
+$ dvc init 
+$ dvc add DATAFILE.md
+$ dvc add data
+$ dvc remote add origin https://dagshub.com/bbhamed/mlops.dvc
+$ dvc remote modify origin --local auth basic
+$ dvc remote modify origin --local user bassem.benhamed
+$ dvc remote modify origin --local password <token>
+# Your settings -> Tokens > copy
+
+$ git add .
+$ git commit -m "first data file"
+$ git push
+
+$ dvc push -r origin
+
+3. Modification de code 
+
+$ git add .
+$ git commit -m "nom significatif commit"
+$ git push -u origin main
+

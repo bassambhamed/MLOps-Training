@@ -1,0 +1,8 @@
+matplotlib==3.8.0
+numpy== 1.26.4
+pandas==2.1.4
+plotly==5.22.0
+streamlit==1.30.0
+python-multipart==0.0.9
+requests==2.31.0
+srvresolver==0.3.5

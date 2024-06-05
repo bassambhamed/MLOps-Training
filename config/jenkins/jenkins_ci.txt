@@ -1,0 +1,11 @@
+$ docker build -t jenkins/jenkins .
+$ docker run -d -p 8085:8080 -v/var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home jenkins/jenkins
+
+$ cat /var/jenkins_home/secrets/initialAdminPassword
+
+Installer les plugins par défaut
+
+Étape 6 : Installer les plugins DagsHub + Docker + Docker Pipeline
+
+
+

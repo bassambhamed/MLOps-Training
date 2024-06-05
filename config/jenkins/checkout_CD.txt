@@ -1,0 +1,63 @@
+pipeline {
+    agent any
+   
+
+    environment {
+        //once you sign up for Docker hub, use that user_id here
+        registry = "bbhamed/docker-backend-mlops" //Name of image
+        dockerImage = ''  
+        registryCredential=''  //
+        STAGING='mlops-fraud-app' //Le nom de l'application de heroku
+    }
+    //Checkout
+    stages {
+        stage('Chechout') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: '542b643c-b8d3-4cbb-9682-93de6d49338b', url: 'https://dagshub.com/bbhamed/mlops.git']]])    }
+        }
+  
+         // Building Docker images
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build(registry, "./backend") 
+        }
+      }
+    }
+	
+    
+        // Stopping Docker containers for cleaner Docker run (localy)
+     stage('Docker stop container') {
+         steps {
+            sh 'docker ps -f name=container-backend-mlops -q | xargs --no-run-if-empty docker container stop'
+            sh 'docker container ls -a -f name=container-backend-mlops -q | xargs -r docker container rm'
+         }
+       }
+       
+       
+       // Running Docker container, make sure port 8081 is opened in (localy)
+    stage('Docker Run') {
+     steps{
+         script {
+            dockerImage.run(" -e PORT=8081  -p 8081:8081 --rm --name backend-api")
+         }
+      }
+    }
+    
+       // Deploy heroku
+       stage('Deploy Heroku') {
+     steps{
+         script {
+            sh'''
+            cd backend
+            heroku container:login
+            heroku create $STAGING || echo "project already exist" 
+            heroku container:push -a $STAGING web
+            heroku container:release -a $STAGING web
+'''
+         }
+      }
+    }
+    }
+   
+}

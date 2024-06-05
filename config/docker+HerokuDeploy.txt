@@ -1,0 +1,30 @@
+# docker command
+
+# Acceder au répertoire backend
+$ docker build -t docker-backend-mlops .
+$ docker run -e PORT=8080:8080 -p 8080:8080 --name container-backend-mlops docker-backend-mlops
+
+# Acceder au répertoire frontend
+$ docker build -t docker-frontend-mlops .
+$ docker run -e PORT=8009 -p 8009:8009 --name container-frontend-mlops docker-frontend-mlops
+
+# Heroku Deployment
+
+# login to Heroku
+# create new app -> backendapi
+# Deployment method -> Container registry -> Heroku CLI
+# Win OS : télécharger 64-bit installer
+# Mac OS : $ brew tap heroku/brew && brew install heroku
+# Ubuntu OS : $ curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
+$ heroku login
+$ docker ps
+$ heroku container:login
+$ heroku container:push web --app backendapi
+$ heroku container:release web --app backendapi
+
+
+# create new app -> frontend
+$ heroku container:push web --app frontendfraud
+$ heroku container:release web --app frontendfraud
+

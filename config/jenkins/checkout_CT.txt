@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+checkout scmGit(branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: '1a440895-7c0f-4794-88c6-8859b337e77d', url: 'https://dagshub.com/bassem.benhamed/bootcamp.git']])       
+                
+            }
+        }
+        stage('Python script') {
+            steps{
+                dir('./backend/src'){
+            sh 'python3 modeling.py'}
+
+        }
+        }
+        
+    }
+}

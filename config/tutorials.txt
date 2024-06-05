@@ -1,0 +1,15 @@
+# MLFlow
+https://www.youtube.com/watch?v=r0do1KVEGqM&list=PLwFaZuSL_mfrCjOdA6I--wC13Hj7eNRYU&index=1
+https://www.youtube.com/watch?v=1EYVQGdXVOo&list=PLwFaZuSL_mfrCjOdA6I--wC13Hj7eNRYU&index=2
+
+# FastAPI
+https://www.youtube.com/watch?v=tLKKmouUams
+
+# Streamlit + fastAPI
+https://www.youtube.com/watch?v=b7ZaEFxWsuA
+
+# Streamlit Full course
+https://www.youtube.com/playlist?list=PLa6CNrvKM5QU7AjAS90zCMIwi9RTFNIIW
+
+# Docker
+https://www.youtube.com/watch?v=pg19Z8LL06w

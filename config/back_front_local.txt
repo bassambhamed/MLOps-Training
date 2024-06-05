@@ -1,0 +1,5 @@
+Streamline run # backend 
+uvicorn main:app --reload
+
+# frontend
+streamlit run main.py --server.port 8080

@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    environment {
+        //once you sign up for Docker hub, use that user_id here
+        registry = "bbhamed/docker-backend-mlops"
+        dockerImage = ''
+    }
+    //Checkout
+    stages {
+        stage('Checkout') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'Dagshub credential', url: 'https://dagshub.com/bbhamed/mlops.git']]])
+        }
+        }
+
+         // Building Docker images
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build(registry, "./backend") 
+        }
+      }
+    }
+    }  
+}
